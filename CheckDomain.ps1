@@ -15,3 +15,4 @@ function Get-DomainInfo
 }
 
 Get-DomainInfo
+Read-Host
