@@ -4,7 +4,7 @@ function CreateSimple
         [Parameter(Mandatory)]$IdentityClaimType,
         [Parameter(Mandatory)]$ReplyPartyIdentifier,
         [Parameter(Mandatory)]$SignInUrl,
-        [Parameter(Mandatory)]$ProviderName,)
+        [Parameter(Mandatory)]$ProviderName)
 	process
 	{
     $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($CertificatePath);
