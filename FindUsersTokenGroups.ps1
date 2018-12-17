@@ -16,14 +16,19 @@ function Get-UserInfo
         foreach($result in $results)
         {
             $tmp = new-object System.DirectoryServices.DirectoryEntry($result.Path, $user.Username, $p);
+            echo $tmp.Path;
             $tokenGroupName = ,"tokenGroups";
             $tmp.RefreshCache($tokenGroupName);
             $allGroupsSids= $tmp.Properties["tokenGroups"];
             foreach($gSid in $allGroupsSids)
             {
                 $gSidStr  = new-object System.Security.Principal.SecurityIdentifier($gSid,0);
-                echo $gSidStr
+                $gSidPath = $domainPath+"/<SID="+$gSidStr.ToString()+">";
+                $gEntry = new-object System.DirectoryServices.DirectoryEntry($gSidPath,
+                 $user.Username, $p);
+                echo $gEntry;
             }
+            echo "Finished".
         }
 		
 	}
