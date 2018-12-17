@@ -10,7 +10,7 @@ function Get-UserInfo
 		echo $domainPath;
 		$d = new-object System.DirectoryServices.DirectoryEntry($domainPath, $user.Username, $p);
         $searcher= new-object System.DirectoryServices.DirectorySearcher($d);
-        $searcher.Filter = "(|(cn="+$user.Username+")(samAccountName="+"$user.Username"+"))";
+        $searcher.Filter = "(|(cn="+$user.Username+")(samAccountName="+$user.Username+"))";
         $searcher.SearchScope = [System.DirectoryServices.SearchScope]::Subtree;
         $results = $searcher.FindAll();
         foreach($result in $results)
